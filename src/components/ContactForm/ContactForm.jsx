@@ -6,16 +6,43 @@ export class ContactForm extends Component {
     number: '',
   };
 
+  handleChange = ({ target: { name, value } }) => {
+    this.setState({ [name]: value });
+  };
+
+  handleSubmit = evt => {
+    evt.preventDefault();
+    this.props.addContact({ ...this.state });
+    this.setState({
+      name: '',
+      namber: '',
+    });
+  };
+
   render() {
     const { name, number } = this.state;
     return (
       <>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label>
-            <input type="text" name="name" required value={name} />
+            Name
+            <input
+              type="text"
+              name="name"
+              required
+              value={name}
+              onChange={this.handleChange}
+            />
           </label>
           <label>
-            <input type="tel" name="number" required value={number} />
+            Number
+            <input
+              type="tel"
+              name="number"
+              required
+              value={number}
+              onChange={this.handleChange}
+            />
           </label>
           <button type="submit">Add contact</button>
         </form>
