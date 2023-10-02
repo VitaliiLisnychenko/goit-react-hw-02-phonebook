@@ -10,13 +10,26 @@ export class ContactForm extends Component {
     this.setState({ [name]: value });
   };
 
+  reset = () => {
+    this.setState({ name: '', number: '' });
+  };
+
   handleSubmit = evt => {
     evt.preventDefault();
-    this.props.addContact({ ...this.state });
-    this.setState({
-      name: '',
-      namber: '',
-    });
+    const { onSubmit, nameAlreadyIs, numberAlreadyIs } = this.props;
+
+    if (nameAlreadyIs(this.state.name)) {
+      alert(`${this.state.nsme} is already in contacts.`);
+      return;
+    }
+
+    if (numberAlreadyIs(this.state.number)) {
+      alert(`${this.state.number} is already in contacts.`);
+      return;
+    }
+
+    onSubmit(this.state);
+    this.reset();
   };
 
   render() {
