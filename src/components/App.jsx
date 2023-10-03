@@ -38,8 +38,10 @@ export class App extends Component {
   };
 
   filterContacts = () => {
-    return this.state.contacts.filter(contact =>
-      contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
+    return this.state.contacts.filter(
+      contact =>
+        contact.name.toLowerCase().match(this.state.filter.toLowerCase()) ||
+        contact.number.match(this.state.filter)
     );
   };
 

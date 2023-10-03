@@ -1,0 +1,25 @@
+.label {
+  font-size: 18px;
+  font-weight: 500;
+}
+.input {
+  width: 335px;
+  height: 25px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: solid 1px;
+  border-radius: 5px;
+}
+.button {
+  font-size: 15px;
+  margin-top: 10px;
+  width: 100px;
+  height: 30px;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 2px solid black;
+  &:hover {
+    color: green;
+    border: 2px solid rgb(59, 198, 59);
+  }
+}
