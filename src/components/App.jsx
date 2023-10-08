@@ -45,9 +45,17 @@ export class App extends Component {
     );
   };
 
+  // onDelete = id => {
+  //   const data = this.state.contacts.filter(contact => contact.id !== id);
+  //   this.setState({ contacts: [...data] });
+  // };
+
   onDelete = id => {
-    const data = this.state.contacts.filter(contact => contact.id !== id);
-    this.setState({ contacts: [...data] });
+    this.setState(prevState => {
+      return {
+        contacts: prevState.contacts.filter(contact => contact.id !== id),
+      };
+    });
   };
 
   render() {
